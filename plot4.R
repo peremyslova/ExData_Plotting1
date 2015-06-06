@@ -49,8 +49,20 @@ sqldata$wdays<-wday(sqldata$datetime, label=TRUE)
 #Note that in this dataset missing values are coded as ?.
 sqldata[is.na(sqldata)] <- "?"
 
+#Drawing plot two for Global_active_power and using the names of weekdays as x axis
+png(filename="plot4.png")
+
+#Passing a vector indicating that there will be 2 rows and 2 columns to draw plots
+old.par <- par(mfrow=c(2,2))
+
+#Drawing plot for Voltage and using the names of weekdays as x axis
+
+plot(sqldata$datetime,as.numeric(sqldata$Voltage),type="l",las=1, ylab="Voltage",xlab="datetime",col = "black")
+
+#Drawing plot two for Global_active_power and using the names of weekdays as x axis
+plot(sqldata$datetime,as.numeric(sqldata$Global_active_power),type="l",las=1, ylab="Global Active Power",xlab="",col = "black")
+
 #Drawing plot three for 3 Sub_metering columns and using the names of weekdays as x axis
-png(filename="plot3.png")
 
 plot(sqldata$datetime,as.numeric(sqldata$Sub_metering_1),type="l",las=1, ylab="Energy sub metering",xlab="",col = "black")
 
@@ -59,8 +71,8 @@ lines(sqldata$datetime,as.numeric(sqldata$Sub_metering_2),type="l",las=1, ylab="
 
 lines(sqldata$datetime,as.numeric(sqldata$Sub_metering_3),type="l",las=1, ylab="Energy sub metering",xlab="",col = "blue")
 
-#Adding legend where lwd=2 is the thickness of the lines and lty=1 is the type of the line
-legend("topright", lwd=2, lty=1, col=c("black","red","blue"), legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
+#Drawing plot for Global_reactive_power and using the names of weekdays as x axis
 
+plot(sqldata$datetime,as.numeric(sqldata$Global_reactive_power),type="l",las=1, ylab="Global_reactive_power",xlab="datetime",col = "black")
 
 dev.off()
