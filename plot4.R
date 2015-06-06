@@ -55,12 +55,12 @@ png(filename="plot4.png")
 #Passing a vector indicating that there will be 2 rows and 2 columns to draw plots
 old.par <- par(mfrow=c(2,2))
 
+#Drawing plot two for Global_active_power and using the names of weekdays as x axis
+plot(sqldata$datetime,as.numeric(sqldata$Global_active_power),type="l",las=1, ylab="Global Active Power",xlab="",col = "black")
+
 #Drawing plot for Voltage and using the names of weekdays as x axis
 
 plot(sqldata$datetime,as.numeric(sqldata$Voltage),type="l",las=1, ylab="Voltage",xlab="datetime",col = "black")
-
-#Drawing plot two for Global_active_power and using the names of weekdays as x axis
-plot(sqldata$datetime,as.numeric(sqldata$Global_active_power),type="l",las=1, ylab="Global Active Power",xlab="",col = "black")
 
 #Drawing plot three for 3 Sub_metering columns and using the names of weekdays as x axis
 
