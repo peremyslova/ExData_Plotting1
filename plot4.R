@@ -60,7 +60,7 @@ plot(sqldata$datetime,as.numeric(sqldata$Global_active_power),type="l",las=1, yl
 
 #Drawing plot for Voltage and using the names of weekdays as x axis
 
-plot(sqldata$datetime,as.numeric(sqldata$Voltage),type="l",las=1, ylab="Voltage",xlab="datetime",col = "black")
+plot(sqldata$datetime,as.numeric(sqldata$Voltage),type="l", ylab="Voltage",xlab="datetime",col = "black")
 
 #Drawing plot three for 3 Sub_metering columns and using the names of weekdays as x axis
 
