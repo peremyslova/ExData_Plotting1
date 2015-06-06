@@ -71,6 +71,9 @@ lines(sqldata$datetime,as.numeric(sqldata$Sub_metering_2),type="l",las=1, ylab="
 
 lines(sqldata$datetime,as.numeric(sqldata$Sub_metering_3),type="l",las=1, ylab="Energy sub metering",xlab="",col = "blue")
 
+#Adding legend to this plot where lwd=2 is the thickness of the lines and lty=1 is the type of the line
+legend("topright", lwd=2, lty=1, col=c("black","red","blue"), legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
+
 #Drawing plot for Global_reactive_power and using the names of weekdays as x axis
 
 plot(sqldata$datetime,as.numeric(sqldata$Global_reactive_power),type="l",las=1, ylab="Global_reactive_power",xlab="datetime",col = "black")
