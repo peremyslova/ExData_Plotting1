@@ -50,7 +50,17 @@ sqldata$wdays<-wday(sqldata$datetime, label=TRUE)
 sqldata[is.na(sqldata)] <- "?"
 
 #Drawing plot two for Global_active_power and using the names of weekdays as x axis
-png(filename="plot2.png")
+png(filename="plot3.png")
 
-plot(sqldata$datetime,as.numeric(sqldata$Global_active_power),type="l",las=1, ylab="Global Active Power (kilowatts)",xlab="",col = "black")
+plot(sqldata$datetime,as.numeric(sqldata$Sub_metering_1),type="l",las=1, ylab="Energy sub metering",xlab="",col = "black")
+
+#lines() is used to add to existing plot, it can't be used to start a plot
+lines(sqldata$datetime,as.numeric(sqldata$Sub_metering_2),type="l",las=1, ylab="Energy sub metering",xlab="",col = "red")
+
+lines(sqldata$datetime,as.numeric(sqldata$Sub_metering_3),type="l",las=1, ylab="Energy sub metering",xlab="",col = "blue")
+
+#Adding legend where lwd=2 is the thickness of the lines and lty=1 is the type of the line
+legend("topright", lwd=2, lty=1, col=c("black","red","blue"), legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
+
+
 dev.off()
