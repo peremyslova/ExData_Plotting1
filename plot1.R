@@ -44,11 +44,6 @@ sqldata <- read.csv.sql('household_power_consumption.txt', sql = 'select * from 
 library(lubridate)
 sqldata$datetime <- dmy_hms(paste(sqldata$Date, sqldata$Time))
 
-#???df_D<-alldata[order(as.Date(alldata$Date, format="%d/%m/%Y")),]
-#???df_T<-df_D[order(strptime(df_D$Date, format="%d/%m/%Y")),]
-
-#???df <- filter(df_T, DateTime >= as.Date("2006-02-01 00:00:00"), DateTime < as.Date("2006-02-03 00:00:00"))
-
 #Note that in this dataset missing values are coded as ?.
 sqldata[is.na(sqldata)] <- "?"
 
@@ -56,5 +51,3 @@ sqldata[is.na(sqldata)] <- "?"
 png(filename="plot1.png")
 hist(as.numeric(sqldata$Global_active_power), las=1,main="Global Active Power", xlab="Global Active Power (kilowatts)",col = "red")
 dev.off()
-
-
